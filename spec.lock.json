@@ -1,0 +1,10 @@
+{
+  "url": "https://raw.githubusercontent.com/openresponses/openresponses/4849f32442bc380852bb4068f0b6cfff347c2baa/public/openapi/2026-04-24/openapi.json",
+  "commit": "4849f32442bc380852bb4068f0b6cfff347c2baa",
+  "sha256": "d598753c3a86fd8a2434828fe39dcc8786a7a694bbe46080a0d24c9fa40e72df",
+  "version": "2026-04-24",
+  "openapi": "3.1.0",
+  "repository": "https://github.com/openresponses/openresponses",
+  "license": "Apache-2.0",
+  "license_url": "https://raw.githubusercontent.com/openresponses/openresponses/4849f32442bc380852bb4068f0b6cfff347c2baa/LICENSE"
+}
