@@ -13,7 +13,11 @@ zig fetch --save git+https://github.com/h0rv/openresponses.zig
 Add the module in your `build.zig`:
 
 ```zig
-const sdk = b.dependency("openresponses", .{ .target = target, .optimize = optimize });
+const sdk = b.dependency("openresponses", .{
+    .target = target,
+    .optimize = optimize,
+});
+
 exe.root_module.addImport("openresponses", sdk.module("openresponses"));
 ```
 
@@ -28,14 +32,22 @@ const api = @import("openresponses");
 
 pub fn main(init: std.process.Init) !void {
     const key = init.environ_map.get("OPENRESPONSES_API_KEY") orelse return error.MissingApiKey;
+
     var client = api.Client.init(init.gpa, init.io, key);
     defer client.deinit();
-    if (init.environ_map.get("OPENRESPONSES_BASE_URL")) |url| client.withBaseUrl(url);
+
+    if (init.environ_map.get("OPENRESPONSES_BASE_URL")) |url| {
+        client.withBaseUrl(url);
+    }
+
     var response = try api.createResponse(&client, .{
         .model = "gpt-5.4-mini",
-        .input = .{ .string = "Say hello." },
+        .input = .{
+            .string = "Say hello.",
+        },
     });
     defer response.deinit();
+
     std.debug.print("{s}\n", .{response.value().id});
 }
 ```
